@@ -48,10 +48,10 @@ max_value01 = list(min_max_01.getInfo().values())[0]
 min_value01 = list(min_max_01.getInfo().values())[1]
 
 ## https://towardsdatascience.com/how-to-download-an-image-using-python-38a75cfa21c
-coarseImage2_URL = img_01.getThumbURL({'min': min_value01, 'max': max_value01})
+img_01_URL = img_01.getThumbURL({'min': min_value01, 'max': max_value01})
 filePath = 'C:/Users/ferna/Desktop/MOD11A1_2018_07_08.png'
 
-r = requests.get(coarseImage2_URL, stream = True)
+r = requests.get(img_01_URL, stream = True)
 
 if r.status_code == 200:
     r.raw.decode_content = True
