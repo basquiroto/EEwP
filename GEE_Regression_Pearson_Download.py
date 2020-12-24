@@ -41,6 +41,15 @@ slope = list(regress.getInfo().values())[0][1][0]
 
 print('y = ', round(intercept, 4), ' + ', round(slope, 4), 'x')
 
+Two_Bands = ee.Image.cat([img_01, img_02])
+R2_dict = Two_Bands.reduceRegion(
+    reducer = ee.Reducer.pearsonsCorrelation(),
+    geometry = lim_Rect, 
+    scale = 1000)
+R2 = list(R2_dict.getInfo().values())[0]
+
+print('R**2: ', round(R2, 4))
+
 min_max_01 = img_01.reduceRegion(**{'reducer': ee.Reducer.minMax(),
                                     'geometry': lim_Rect,
                                     'scale': 1000})
